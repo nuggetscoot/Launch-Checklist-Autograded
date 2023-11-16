@@ -660,7 +660,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     
  }
  
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     
  }
  
