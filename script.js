@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-const { formSubmission, pickPlanet } = require("./scriptHelper");
+const { pickPlanet } = require("./scriptHelper");
 const { myFetch } = require("./scriptHelper")
 window.addEventListener("load", function() {
 
@@ -8,15 +8,12 @@ window.addEventListener("load", function() {
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
   
     let listedPlanetsResponse = myFetch();
-    listedPlanetsResponse.then(function (result) {
-        listedPlanets = result;
-        console.log(listedPlanets);
+    myFetch().then(function (result) {
         const selectedPlanet = pickPlanet(listedPlanets);
-        console.log(selectedPlanet)
+        return selectedPlanet;
     }).then(function () {
         console.log(listedPlanets);
-
-        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+        // Below this comment, call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         addDestinationInfo(
             document,
             "Saturn/Titan",
@@ -27,19 +24,16 @@ window.addEventListener("load", function() {
             "https://solarsystem.nasa.gov/system/resources/detail_files/16278_PIA20016.jpg"
         )
         const launchForm = document.querySelector("form[data-testid='testForm']");
-    launchForm.addEventListener("submit", function(){
-        event.preventDefault();
-        const pilotNameValue = document.getElementById("pilotName").value;
-        const copilotNameValue = document.getElementById("copilotName").value;
-        const fuelLevelValue = document.getElementById("fuelLevel").value;
-        const cargoMassValue = document.getElementById("cargoMass").value;
-        formSubmission(faultyItems, document, list, pilotNameValue, copilotNameValue, fuelLevelValue, cargoMassValue);
-        
-        
-    })
-    })
-    
- });
+        launchForm.addEventListener("submit", function(){
+            event.preventDefault();
+            const pilotName = document.getElementById("pilotName").value;
+            const copilotName = document.getElementById("copilotName").value;
+            const fuelLevel = document.getElementById("fuelLevel").value;
+            const cargoMass = document.getElementById("cargoMass").value;
+            formSubmission(pilotName, copilotName, fuelLevel, cargoMass);
+        })
+    }) 
+});
 
  module.exports = {
     validateInput,

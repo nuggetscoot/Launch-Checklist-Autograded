@@ -10,6 +10,7 @@ const { screen } = require('@testing-library/jest-dom');
 
 var studentFunctions = require('../scriptHelper.js');
 let script = fs.readFileSync(path.resolve(__dirname, "../script.js"), 'utf8');
+global.document = document;
 
 const studentPlanet = studentFunctions.pickPlanet.toString();
 
