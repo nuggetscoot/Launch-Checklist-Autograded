@@ -26,14 +26,14 @@
     const launchStatus = document.getElementById("launchStatus");
 
 
-    if (validateInput(pilotName.value) === "Empty" || validateInput(copilotName.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoLevel.value) === "Empty") {
+    if (validateInput(pilotName) === "Empty" || validateInput(copilotName) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         alert("All fields are required")
     }
     // Default Styling
     h2.style.color = "black";
     h2.innerHTML = "Awaiting Information Before Launch";
-    pilotStatus.innerHTML = `Pilot Chris is ready for launch`;
-    copilotStatus.innerHTML= `Co-pilot Bob is ready for launch`;
+    pilotStatus.innerHTML = `Pilot ${pilotName} is ready for launch`;
+    copilotStatus.innerHTML= `Co-pilot ${copilotName} is ready for launch`;
     fuelStatus.innerHTML = "Fuel level high enough for launch";
     cargoStatus.innerHTML = "Cargo mass low enough for launch";
     list.style.visibility = "visible"; 
@@ -65,9 +65,8 @@
         }
     }
 
-    function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-        const missionTarget = document.getElementById("missionTarget")
-        missionTarget.innerHTML = `
+    function addDestinationInfo(document, selectedPlanet, name, diameter, star, distance, moons, image) {
+        missionTarget.innerHTML = ` 
                      <h2>Mission Destination</h2>
                      <ol>
                          <li>Name: ${name}</li>
@@ -76,7 +75,8 @@
                          <li>Distance from Earth: ${distance}</li>
                          <li>Number of Moons: ${moons}</li>
                      </ol>
-                     <img src="${imageUrl}">`
+                     <img src="${image}">`
+                     console.log(image)
     }
  
  
